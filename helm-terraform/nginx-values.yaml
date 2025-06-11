@@ -1,0 +1,14 @@
+## nginx configuration
+controller:
+  name: controller
+  containerName: controller
+  ingressClassByName: true
+  ingressClass: nginx
+  allowSnippetAnnotations: true
+  config:
+    allow-snippet-annotations: "true"
+  service:
+    enabled: true
+    external:
+      enabled: true
+

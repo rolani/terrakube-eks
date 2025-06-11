@@ -1,0 +1,389 @@
+## Global Name
+name: "terrakube"
+
+global:
+  imagePullSecrets: []
+
+## Terrakube Security
+security:
+  adminGroup: "TerrakubeEKS:TERRAKUBE_ADMIN"
+  patSecret: "bAUaAojZP3XhkuE2rWBtR3gRAHPzQKkx" # Sample Key 32 characters z6QHX!y@Nep2QDT!53vgH43^PjRXyC3X
+  internalSecret: "AxxPdgpCi72f8WhMXCTGhtfMRp6AuBfj" # Sample Key 32 characters Kb^8cMerPNZV6hS!9!kcD*KuUPUBa^B3
+  dexClientId: "github"
+  dexClientScope: "email openid profile offline_access groups"
+  dexIssuerUri: "http://terrakube-api.richolaniyan.com/dex"
+  caCerts:
+    rootCA.pem: |
+      -----BEGIN CERTIFICATE-----
+      MIIFBjCCA+6gAwIBAgISAwaJBzXdTxqr3w7iJOONvvNLMA0GCSqGSIb3DQEBCwUA
+      MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD
+      EwNSMTEwHhcNMjUwMjAxMDQyODA4WhcNMjUwNTAyMDQyODA3WjAdMRswGQYDVQQD
+      DBIqLnJpY2hvbGFuaXlhbi5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+      AoIBAQC3Dh3o6oW/i+WCgTZT2F9UWkCaHWH6inaVuqiS0BYPqkkDWnZ3dHq/WJbT
+      AX8XwoVNBfmRlzlCFKRiBRWMiCtJPY9O6RwdWazUs8Y9gubMuomq2mTzdD0CfJJC
+      zfHGCEqnEWOKxSWUMJtlr777/DQ55g97fQsHxXzGAMR6Ssq/biY9nNs3xOGm7ymx
+      IHfclv/aJPclMkZo3OjCc5ZfYnEOuaNJHqbwACnPH6/knnWo0BeeQYxxUwZ5KVLX
+      kBpSRIKF0v/IigrSS3oEUQqV2LzbbbWaRisChXHVC6IpV8qNteMEXo99y2wVDT3H
+      h0HjlHtkB5ammYionp2wbGmUs9hTAgMBAAGjggIoMIICJDAOBgNVHQ8BAf8EBAMC
+      BaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAw
+      HQYDVR0OBBYEFKG1Y+9rWHolr/SFlF1HIkN0a7g+MB8GA1UdIwQYMBaAFMXPRqTq
+      9MPAemyVxC2wXpIvJuO5MFcGCCsGAQUFBwEBBEswSTAiBggrBgEFBQcwAYYWaHR0
+      cDovL3IxMS5vLmxlbmNyLm9yZzAjBggrBgEFBQcwAoYXaHR0cDovL3IxMS5pLmxl
+      bmNyLm9yZy8wLwYDVR0RBCgwJoISKi5yaWNob2xhbml5YW4uY29tghByaWNob2xh
+      bml5YW4uY29tMBMGA1UdIAQMMAowCAYGZ4EMAQIBMIIBBAYKKwYBBAHWeQIEAgSB
+      9QSB8gDwAHUAouMK5EXvva2bfjjtR2d3U9eCW4SU1yteGyzEuVCkR+cAAAGUv/mq
+      8QAABAMARjBEAiA9vOJ+/c6Y1SKG3xOGAmtxJpO3L8S0Yzf1i6zv7t+EPgIgTSEq
+      g959fUPM0Yru1mYj6E91xTrveBGH4+Yiz0f0Sv0AdwDM+w9qhXEJZf6Vm1PO6bJ8
+      IumFXA2XjbapflTA/kwNsAAAAZS/+asKAAAEAwBIMEYCIQDfpReSKoFVgjpAv6oF
+      vbIGR4ZUGnn8b3nONGtT6S3evQIhAOKPL/pFXN6inAPdIuULntwfDpU0xMGBJpfC
+      NfQhSgI6MA0GCSqGSIb3DQEBCwUAA4IBAQB58EFNqT4aj8w6GcjRby2VCOP2CjLD
+      b9/FfYWda9NhziZqBgvTmQBRqL52H6O19IMUrJUxoSNQnp5E46zwqkHdjIz7PINk
+      FpbF9NOgq4VoPZvdcLpkOkU/XCTK7o0oHhAb+tQK1fG/FBxZqyORXFMf4k0+nhpg
+      FWrrgTRcZIQPb+eqbC5e6XkNZ5+It8Oga1MY6UV7vFpWvEjXv4ve/q/hwZaRT26Y
+      KRdsIEHYi2npOOi9JTRRl6LTTGeJ80fYFHEJ/AOjA01+C7zjBoIl31n/tNJ7Be6j
+      JBGKbpmeEB4y7SstKlC9sZLj7nGY4+GsvphzyBgtU2buUwHHDVT2Sed7
+      -----END CERTIFICATE-----
+    intermediateCA.pem: |
+      -----BEGIN CERTIFICATE-----
+      MIIFBjCCAu6gAwIBAgIRAIp9PhPWLzDvI4a9KQdrNPgwDQYJKoZIhvcNAQELBQAw
+      TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+      cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjQwMzEzMDAwMDAw
+      WhcNMjcwMzEyMjM1OTU5WjAzMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg
+      RW5jcnlwdDEMMAoGA1UEAxMDUjExMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+      CgKCAQEAuoe8XBsAOcvKCs3UZxD5ATylTqVhyybKUvsVAbe5KPUoHu0nsyQYOWcJ
+      DAjs4DqwO3cOvfPlOVRBDE6uQdaZdN5R2+97/1i9qLcT9t4x1fJyyXJqC4N0lZxG
+      AGQUmfOx2SLZzaiSqhwmej/+71gFewiVgdtxD4774zEJuwm+UE1fj5F2PVqdnoPy
+      6cRms+EGZkNIGIBloDcYmpuEMpexsr3E+BUAnSeI++JjF5ZsmydnS8TbKF5pwnnw
+      SVzgJFDhxLyhBax7QG0AtMJBP6dYuC/FXJuluwme8f7rsIU5/agK70XEeOtlKsLP
+      Xzze41xNG/cLJyuqC0J3U095ah2H2QIDAQABo4H4MIH1MA4GA1UdDwEB/wQEAwIB
+      hjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwEgYDVR0TAQH/BAgwBgEB
+      /wIBADAdBgNVHQ4EFgQUxc9GpOr0w8B6bJXELbBeki8m47kwHwYDVR0jBBgwFoAU
+      ebRZ5nu25eQBc4AIiMgaWPbpm24wMgYIKwYBBQUHAQEEJjAkMCIGCCsGAQUFBzAC
+      hhZodHRwOi8veDEuaS5sZW5jci5vcmcvMBMGA1UdIAQMMAowCAYGZ4EMAQIBMCcG
+      A1UdHwQgMB4wHKAaoBiGFmh0dHA6Ly94MS5jLmxlbmNyLm9yZy8wDQYJKoZIhvcN
+      AQELBQADggIBAE7iiV0KAxyQOND1H/lxXPjDj7I3iHpvsCUf7b632IYGjukJhM1y
+      v4Hz/MrPU0jtvfZpQtSlET41yBOykh0FX+ou1Nj4ScOt9ZmWnO8m2OG0JAtIIE38
+      01S0qcYhyOE2G/93ZCkXufBL713qzXnQv5C/viOykNpKqUgxdKlEC+Hi9i2DcaR1
+      e9KUwQUZRhy5j/PEdEglKg3l9dtD4tuTm7kZtB8v32oOjzHTYw+7KdzdZiw/sBtn
+      UfhBPORNuay4pJxmY/WrhSMdzFO2q3Gu3MUBcdo27goYKjL9CTF8j/Zz55yctUoV
+      aneCWs/ajUX+HypkBTA+c8LGDLnWO2NKq0YD/pnARkAnYGPfUDoHR9gVSp/qRx+Z
+      WghiDLZsMwhN1zjtSC0uBWiugF3vTNzYIEFfaPG7Ws3jDrAMMYebQ95JQ+HIBD/R
+      PBuHRTBpqKlyDnkSHDHYPiNX3adPoPAcgdF3H2/W0rmoswMWgTlLn1Wu0mrks7/q
+      pdWfS6PJ1jty80r2VKsM/Dj3YIDfbjXKdaFU5C+8bhfJGqU3taKauuz0wHVGT3eo
+      6FlWkWYtbt4pgdamlwVeZEW+LM7qZEJEsMNPrfC03APKmZsJgpWCDWOKZvkZcvjV
+      uYkQ4omYCTX5ohy+knMjdOmdH9c7SpqEWBDC86fiNex+O0XOMEZSa8DA
+      -----END CERTIFICATE-----
+
+## Dex
+dex:
+  enabled: true
+  config:
+    issuer: https://terrakube-api.richolaniyan.com/dex
+
+    storage:
+      type: memory
+    web:
+      http: 0.0.0.0:5556
+      allowedOrigins: ['*']
+      skipApprovalScreen: true
+    oauth2:
+      responseTypes: ["code", "token", "id_token"]
+
+    connectors:
+    - type: github
+      id: github
+      name: gitHub
+      config:
+        clientID: "Ov23liP8n6BLrQ5MaeaI"
+        clientSecret: "fc05523e5f120e7396dc74c9c3596dbff0485674"
+        redirectURI: "https://terrakube-api.richolaniyan.com/dex/callback"
+        loadAllGroups: true
+      
+    staticClients:
+    - id: github
+      redirectURIs:
+      - 'https://terrakube-ui.richolaniyan.com'
+      - '/device/callback'
+      - 'http://localhost:10000/login'
+      - 'http://localhost:10001/login'
+      name: 'github'
+      public: true
+  volumes:
+  - name: gcp-credentials
+    secret:
+      secretName: terrakube-dex-secrets
+      items:
+      - key: "gcp-credentials"
+        path: "gcp-credentials"
+  volumeMount:
+  - name: gcp-credentials
+    mountPath: /etc/gcp/secret
+    readOnly: true
+
+
+## Terraform Storage
+storage:
+  defaultStorage: false
+  aws:
+    accessKey: "AKIA5GP2CRTNPWHVIVG4"
+    secretKey: "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"
+    bucketName: "my-terrakube-bucket-eks"
+    region: "us-east-1"
+
+
+# Default Database Postgresql
+postgresql:
+  auth:
+    username: "terrakube"
+    password: "terrakubepassword"
+    database: "terrakube"
+
+# Default Redis Configuration
+redis:
+  architecture: "standalone"
+  auth:
+    enabled: true
+    password: "7p9iWVeRV4S944"
+
+## API properties
+api:
+  existingSecret: false
+  enabled: true
+  image: azbuilder/api-server
+  version: ""
+  replicaCount: "1"
+  serviceType: "ClusterIP"
+  serviceAccountName: ""
+  rbac:
+    create: false
+    roleName: "terrakube-api-role"
+    roleBindingName: "terrakube-api-role-binding"
+  secrets:
+   - terrakube-api-secrets
+  resources: {}
+  podLabels: {}
+  podAnnotations: {}
+  defaultDatabase: true
+  defaultRedis: true
+  loadSampleData: true
+  terraformReleasesUrl: "https://releases.hashicorp.com/terraform/index.json"
+  securityContext: {}
+  containerSecurityContext: {}
+  imagePullSecrets: []
+  initContainers: []
+  startupProbe:
+    failureThreshold: 30
+    periodSeconds: 10
+  readinessProbe:
+    initialDelaySeconds: 120
+    periodSeconds: 10
+  livenessProbe:
+    initialDelaySeconds: 10
+    periodSeconds: 10
+  cache:
+    moduleCacheMaxTotal: "128"
+    moduleCacheMaxIdle: "128"
+    moduleCacheMinIdle: "64"
+    moduleCacheTimeout: "600000"
+    moduleCacheSchedule: "0 */3 * ? * *"
+  properties:
+    databaseType: "POSTGRESQL"
+    databaseHostname: ""
+    databaseName: ""
+    databaseUser: ""
+    databaseSchema: "public"
+    databasePassword: ""
+    databaseSslMode: "disable"
+    databasePort: "5432"
+    redisHostname: ""
+    redisPassword: ""
+    redisPort: "6379"
+    executorUrl: "http://terrakube-executor-service:8090"
+  env:
+  - name: SERVICE_BINDING_ROOT
+    value: /mnt/platform/bindings
+  volumes:
+    - name: ca-certs
+      secret:
+        secretName: terrakube-ca-secrets
+        items:
+        - key: "rootCA.pem"
+          path: "rootCA.pem"
+        - key: "intermediateCA.pem"
+          path: "intermediateCA.pem"
+        - key: "type"
+          path: "type"
+  volumeMounts:
+  - name: ca-certs
+    mountPath: /mnt/platform/bindings/ca-certificates
+    readOnly: true
+
+
+## The database port is only used for mysql databases
+
+## SslMode values are disable, allow, prefer, require, verify-ca, verify-full. Default mode is "disable".   
+## Reference: https://jdbc.postgresql.org/documentation/publicapi/org/postgresql/PGProperty.html#SSL_MODE
+
+## Executor properties
+executor:
+  existingSecret: false
+  enabled: true
+  image: "azbuilder/executor"
+  version: ""
+  replicaCount: "1"
+  serviceType: "ClusterIP"
+  serviceAccountName: ""
+  secrets:
+   - terrakube-executor-secrets
+  resources: {}
+  podLabels: {}
+  podAnnotations: {}
+  apiServiceUrl: "http://terrakube-api-service:8080"
+  properties:
+    toolsRepository: "https://github.com/AzBuilder/terrakube-extensions"
+    toolsBranch: "main"
+  securityContext: {}
+  containerSecurityContext: {}
+  imagePullSecrets: []
+  initContainers: []
+  startupProbe:
+    failureThreshold: 30
+    periodSeconds: 10
+  readinessProbe:
+    initialDelaySeconds: 120
+    periodSeconds: 10
+  livenessProbe:
+    initialDelaySeconds: 10
+    periodSeconds: 10
+  env:
+  - name: SERVICE_BINDING_ROOT
+    value: /mnt/platform/bindings
+  volumes:
+    - name: ca-certs
+      secret:
+        secretName: terrakube-ca-secrets
+        items:
+        - key: "rootCA.pem"
+          path: "rootCA.pem"
+        - key: "intermediateCA.pem"
+          path: "intermediateCA.pem"
+        - key: "type"
+          path: "type"
+  volumeMounts:
+  - name: ca-certs
+    mountPath: /mnt/platform/bindings/ca-certificates
+    readOnly: true
+
+## Registry properties
+registry:
+  enabled: true
+  existingSecret: false
+  image: azbuilder/open-registry
+  version: ""
+  replicaCount: "1"
+  serviceType: "ClusterIP"
+  serviceAccountName: ""
+  secrets:
+   - terrakube-registry-secrets
+  resources: {}
+  podAnnotations: {}
+  podLabels: {}
+  securityContext: {}
+  containerSecurityContext: {}
+  imagePullSecrets: []
+  initContainers: []
+  env:
+  - name: SERVICE_BINDING_ROOT
+    value: /mnt/platform/bindings
+  volumes:
+    - name: ca-certs
+      secret:
+        secretName: terrakube-ca-secrets
+        items:
+        - key: "rootCA.pem"
+          path: "rootCA.pem"
+        - key: "intermediateCA.pem"
+          path: "intermediateCA.pem"
+        - key: "type"
+          path: "type"
+  volumeMounts:
+  - name: ca-certs
+    mountPath: /mnt/platform/bindings/ca-certificates
+    readOnly: true
+
+## UI Properties
+ui:
+  enabled: true
+  existingSecret: false
+  image: azbuilder/terrakube-ui
+  version: ""
+  replicaCount: "1"
+  serviceType: "ClusterIP"
+  serviceAccountName: ""
+  resources: {}
+  podLabels: {}
+  podAnnotations: {}
+  securityContext: {}
+  containerSecurityContext: {}
+  imagePullSecrets: []
+  initContainers: []
+
+## Ingress properties
+ingress:
+  useTls: true
+  includeTlsHosts: true
+  ui:
+    enabled: true
+    domain: "terrakube-ui.richolaniyan.com"
+    path: "/"
+    pathType: "Prefix"
+    ingressClassName: "nginx"
+    tlsSecretName: tls-secret-ui-terrakube
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-production
+      external-dns.alpha.kubernetes.io/hostname: terrakube-ui.richolaniyan.com
+  api:
+    enabled: true
+    domain: "terrakube-api.richolaniyan.com"
+    path: "/"
+    pathType: "Prefix"
+    ingressClassName: "nginx"
+    tlsSecretName: tls-secret-api-terrakube
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/configuration-snippet: "proxy_set_header Authorization $http_authorization;"
+      cert-manager.io/cluster-issuer: letsencrypt-production
+      external-dns.alpha.kubernetes.io/hostname: terrakube-api.richolaniyan.com
+  registry:
+    enabled: true
+    domain: "terrakube-reg.richolaniyan.com"
+    path: "/"
+    pathType: "Prefix"
+    ingressClassName: "nginx"
+    tlsSecretName: tls-secret-reg-terrakube
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/configuration-snippet: "proxy_set_header Authorization $http_authorization;"
+      cert-manager.io/cluster-issuer: letsencrypt-production
+      external-dns.alpha.kubernetes.io/hostname: terrakube-reg.richolaniyan.com
+  dex:
+    enabled: true
+    path: "/dex/"
+    pathType: "Prefix"
+    ingressClassName: "nginx"
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/configuration-snippet: "proxy_set_header Authorization $http_authorization;"
+      cert-manager.io/cluster-issuer: letsencrypt-production
+  executor:
+    enabled: false
+    domain: "terrakube-executor.richolaniyan.com"
+    path: "/"
+    pathType: "Prefix"
+    ingressClassName: "nginx"
+    tlsSecretName: tls-secret-executor-terrakube    
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-production
+      external-dns.alpha.kubernetes.io/hostname: terrakube-executor.richolaniyan.com
