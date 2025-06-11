@@ -57,7 +57,3 @@ upgrade_policy = {
 zonal_shift_config = {
   enabled = true
 }
-
-# dex details
-# github client id : Ov23liP8n6BLrQ5MaeaI
-# github client secret : fc05523e5f120e7396dc74c9c3596dbff0485674

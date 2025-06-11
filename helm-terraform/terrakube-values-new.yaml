@@ -94,8 +94,8 @@ dex:
       id: github
       name: gitHub
       config:
-        clientID: "Ov23liP8n6BLrQ5MaeaI"
-        clientSecret: "fc05523e5f120e7396dc74c9c3596dbff0485674"
+        clientID: "zzzzzzzzzzz"
+        clientSecret: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         redirectURI: "https://terrakube-api.richolaniyan.com/dex/callback"
         loadAllGroups: true
       
@@ -125,8 +125,8 @@ dex:
 storage:
   defaultStorage: false
   aws:
-    accessKey: "AKIA5GP2CRTNPWHVIVG4"
-    secretKey: "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"
+    accessKey: "AAAAAAAAAAAAAAAAAAA"
+    secretKey: "1111112222233333344444555556666677777"
     bucketName: "my-terrakube-bucket-eks"
     region: "us-east-1"
 
