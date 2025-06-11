@@ -8,7 +8,7 @@ resource "aws_iam_policy" "external_dns" {
         Sid    = "VisualEditor0"
         Effect = "Allow"
         Action = "route53:ChangeResourceRecordSets"
-        Resource = "arn:aws:route53:::hostedzone/Z03363812U8ONWBTLW4I4"
+        Resource = "arn:aws:route53:::hostedzone/ZZZZZZZZZZZZZZZZZZZ"
       },
       {
         Sid    = "VisualEditor1"
@@ -17,7 +17,7 @@ resource "aws_iam_policy" "external_dns" {
           "route53:ListResourceRecordSets",
           "route53:ListTagsForResource"
         ]
-        Resource = "arn:aws:route53:::hostedzone/Z03363812U8ONWBTLW4I4"
+        Resource = "arn:aws:route53:::hostedzone/ZZZZZZZZZZZZZZZZZZZ"
       },
       {
         Sid    = "VisualEditor2"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 eksctl create iamserviceaccount --name external-dns --namespace default \
-    --cluster dev-test-eks-cluster --attach-policy-arn arn:aws:iam::907299425498:policy/externalDNS-policy --approve
+    --cluster dev-test-eks-cluster --attach-policy-arn arn:aws:iam::000000000000:policy/externalDNS-policy --approve
 
 
 
@@ -14,7 +14,7 @@ externalDNS-policy =
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": "route53:ChangeResourceRecordSets",
-            "Resource": "arn:aws:route53:::hostedzone/Z03363812U8ONWBTLW4I4"
+            "Resource": "arn:aws:route53:::hostedzone/ZZZZZZZZZZZZZZZZZZZ"
         },
         {
             "Sid": "VisualEditor1",
@@ -23,7 +23,7 @@ externalDNS-policy =
                 "route53:ListResourceRecordSets",
                 "route53:ListTagsForResource"
             ],
-            "Resource": "arn:aws:route53:::hostedzone/Z03363812U8ONWBTLW4I4"
+            "Resource": "arn:aws:route53:::hostedzone/ZZZZZZZZZZZZZZZZZZZ"
         },
         {
             "Sid": "VisualEditor2",
