@@ -22,7 +22,3 @@ resource "time_sleep" "wait_5_seconds" {
 resource "null_resource" "next" {
   depends_on = [time_sleep.wait_5_seconds]
 }
-
-
-# API TOKEN
-# eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUZXJyYWt1YmUiLCJzdWIiOiJBZG1pbiAoVG9rZW4pIiwiYXVkIjoiVGVycmFrdWJlIiwianRpIjoiYjQ5NWZmMWQtYTBlNS00YmVjLThkNDEtY2E4ZGM1MGU0ZjNiIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiQWRtaW4gKFRva2VuKSIsImdyb3VwcyI6WyJURVJSQUtVQkVfQURNSU4iLCJURVJSQUtVQkVfREVWRUxPUEVSUyJdLCJpYXQiOjE3Mzg0NTU3NTAsImV4cCI6MTczOTMxOTc1MH0.La38at21iHh5k1lQQCvWCIM8DhfE6HakuNQskM5TLb0
